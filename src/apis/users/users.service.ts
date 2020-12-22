@@ -1,9 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { generateResponse } from '../../utils';
+import { generateResponse, generateTokens } from '../../utils';
 
 import { UserRepository } from '../../config/database/repositories/';
 import { CreateUserDto, LoginUserDto, ResponseDto } from '../../dtos';
+import { encryptPassword, decryptPassword } from '../../utils/';
 
 @Injectable()
 export class UserService {
@@ -17,6 +18,7 @@ export class UserService {
 		let user = await this.userRepository.findOne({ username: userDto.username });
 		if (user)
 			return generateResponse(400, false, 'User already exists');
+		userDto.password = await encryptPassword(userDto.password);
 		await this.userRepository.createUser(userDto);
 		return generateResponse(201, true, 'User created');
 	}
@@ -25,7 +27,10 @@ export class UserService {
 		const user = await this.userRepository.findOne({ email: userDto.email });
 		if (!user)
 			return generateResponse(400, false, 'User not found');
-		return generateResponse(200, true, user);
+		if (!await decryptPassword(userDto.password, user.password))
+			return generateResponse(400, false, 'Wrong password');
+		const tokens = generateTokens(user.id);
+		return generateResponse(200, true, { id: user.id, ...tokens });
 	}
 
 	getUsers = async (): Promise<ResponseDto> => {

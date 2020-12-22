@@ -2,6 +2,14 @@ import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './apis/app';
 
+declare global {
+	namespace Express {
+		interface Request {
+			user_id: string;
+		}
+	}
+}
+
 const PORT = process.env.PORT || 8080;
 
 const bootstrap = async () => {

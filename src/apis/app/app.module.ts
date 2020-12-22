@@ -6,6 +6,9 @@ import { UserModule } from '../users';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
+const SYNCHRONIZE: boolean = true;
+const DROP_SCHEMA: boolean = true;
+
 @Module({
 	imports: [TypeOrmModule.forRoot({
 		type: 'postgres',
@@ -15,7 +18,8 @@ import { AppService } from './app.service';
 		password: 'pass',
 		database: 'db',
 		entities: [join(__dirname, '../../config/database/entities/*.entity.{ts,js}')],
-		synchronize: true
+		synchronize: SYNCHRONIZE,
+		dropSchema: DROP_SCHEMA
 	}),
 		UserModule
 	],
