@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { generateResponse } from '../../utils';
+import { generateResponse } from '@/utils';
 
-import { UserRepository } from '../../config/database/repositories/';
-import { CreateUserDto, LoginUserDto, ResponseDto } from '../../dtos';
+import { UserRepository } from '@/config/database/repositories/';
+import { CreateUserDto, LoginUserDto, ResponseDto } from '@/dtos';
 
 @Injectable()
 export class UserService {
@@ -14,7 +14,7 @@ export class UserService {
 	) {}
 
 	register = async (userDto: CreateUserDto): Promise<ResponseDto> => {
-		let user = await this.userRepository.findOne({ username: userDto.username });
+		const user = await this.userRepository.findOne({ username: userDto.username });
 		if (user)
 			return generateResponse(400, false, 'User already exists');
 		await this.userRepository.createUser(userDto);
