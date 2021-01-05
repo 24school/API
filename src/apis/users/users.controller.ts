@@ -26,6 +26,6 @@ export class UserController {
 	@UsePipes()
 	public async getUsers(@Res() response: Response): Promise<Response> {
 		const res: ResponseDto = await this.userService.getUsers();
-		return response.status(200).json();
+		return response.status(200).json(res.returned);
 	}
 }

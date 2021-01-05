@@ -6,6 +6,7 @@ import { AppModule } from '../src/apis/app';
 
 describe('Auth end to end', () => {
 	let app: INestApplication;
+	let access_token: string;
 
 	beforeAll(async () => {
 		const moduleFixture = await Test.createTestingModule({
@@ -27,8 +28,7 @@ describe('Auth end to end', () => {
 				username: 'Testing',
 				email: 'test@testing.com',
 				password: 'TestingPassword123'
-			})
-		console.log(res.body);
+			});
 		expect(res.status).toEqual(201);
 		expect(res.body.success).toEqual(true);
 		expect(res.body.data).toEqual('User created');
@@ -40,8 +40,29 @@ describe('Auth end to end', () => {
 			.send({
 				email: 'test@testing.com',
 				password: 'TestingPassword123'
-			})
+			});
 		console.log(res.body);
+		expect(res.status).toEqual(200);
+		expect(res.body.success).toEqual(true);
+		expect(res.body).toHaveProperty('data.id');
+		expect(res.body).toHaveProperty('data.access_token');
+	});
+
+	it('/users/login (POST) Fails with wrong password', async () => {
+		const res = await request(app.getHttpServer())
+			.post('/api/users/login')
+			.send({
+				email: 'test@testing.com',
+				password: '1234'
+			});
+		expect(res.status).toEqual(400);
+		expect(res.body.success).toEqual(false);
+		expect(res.body.data).toEqual('Wrong password');
+	});
+
+	it('/users/ (GET)', async () => {
+		const res = await request(app.getHttpServer())
+			.get('/api/users/');
 		expect(res.status).toEqual(200);
 		expect(res.body.success).toEqual(true);
 	});
