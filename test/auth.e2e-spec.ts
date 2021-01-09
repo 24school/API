@@ -41,7 +41,6 @@ describe('Auth end to end', () => {
 				email: 'test@testing.com',
 				password: 'TestingPassword123'
 			});
-		console.log(res.body);
 		expect(res.status).toEqual(200);
 		expect(res.body.success).toEqual(true);
 		expect(res.body).toHaveProperty('data.id');

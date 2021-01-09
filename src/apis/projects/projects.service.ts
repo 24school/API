@@ -21,8 +21,7 @@ export class ProjectService {
 	}
 
 	getById = async (id: string): Promise<ResponseDto> => {
-		const project = Projects.find(o => o.title === 'Day 03');
-		console.log(project);
+		const project = Projects.find(o => o.id === id);
 		return generateResponse(200, true, project);
 	}
 

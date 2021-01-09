@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, UsePipes, Res } from '@nestjs/common';
 import { Response } from 'express';
 
 import { UserService } from './users.service';
-import { CreateUserDto, LoginUserDto, ResponseDto } from '../../dtos';
+import { CreateUserDto, LoginUserDto, ResponseDto } from '@/dtos';
 
 @Controller('/api/users')
 export class UserController {

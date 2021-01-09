@@ -8,7 +8,6 @@ export function AuthMiddleware(req: Request, res: Response, next: Function) {
 		return res.status(HttpStatus.UNAUTHORIZED).send();
 	try {
 		const dec = decodeToken(token);
-		console.log(dec);
 		req.user_id = dec.id;
 		return next();
 	} catch(e) {

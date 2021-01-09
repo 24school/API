@@ -17,7 +17,6 @@ export class ProjectController {
 	@Get('/:id')
 	@UsePipes()
 	public async findOne(@Res() response: Response, @Param('id') id: string): Promise<Response> {
-		console.log(id);
 		const res: ResponseDto = await this.projectService.getById(id);
 		return response.status(res.status).json(res.returned);
 	}
