@@ -1,10 +1,19 @@
 {
 	"Projects": [
 		{
+			"title": "Day 03",
+			"description": "Third day of the C pool",
+			"difficulty": 1,
+			"id": "03",
+			"subject_url": "/pool/day03.md",
+			"questions": []
+		},
+		{
 			"title": "First project",
 			"description": "Super project yay",
 			"difficulty": 4,
 			"id": "4",
+			"subject_url": "/pool/day03.md",
 			"questions": [
 				{
 					"title": "What is this project",
@@ -27,6 +36,7 @@
 			"description": "Super project yay",
 			"difficulty": 4,
 			"id": "2",
+			"subject_url": "/pool/day03.md",
 			"questions": [
 				{
 					"title": "What is this project",

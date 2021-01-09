@@ -20,8 +20,9 @@ export class ProjectService {
 		return generateResponse(200, true, proj);
 	}
 
-	getByName = async (): Promise<ResponseDto> => {
-		const project = Projects.find(o => o.title === 'First Project');
+	getById = async (id: string): Promise<ResponseDto> => {
+		const project = Projects.find(o => o.title === 'Day 03');
+		console.log(project);
 		return generateResponse(200, true, project);
 	}
 
