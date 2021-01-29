@@ -7,10 +7,10 @@ services:
     environment:
       DATABASE_URL: postgres://user:pass@postgres:5432/db
       NODE_ENV: development
-      PORT: 3030
+      PORT: 8080
     ports:
-      - "3030:3030"
-    command: sh -c 'npm i && npm run dev'
+      - "8080:8080"
+    command: sh -c 'cd /var/www/app && yarn && yarn start:dev'
     volumes:
       - .:/var/www/app/
       - /var/www/app/node_modules

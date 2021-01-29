@@ -9,25 +9,57 @@
 			"questions": []
 		},
 		{
-			"title": "First project",
+			"title": "Find the biggest square",
 			"description": "Super project yay",
 			"difficulty": 4,
 			"id": "4",
 			"subject_url": "/pool/day03.md",
 			"questions": [
 				{
-					"title": "What is this project",
+					"id": 1,
+					"title": "What is the name of this project",
 					"answers": [
 						{
 							"id": "1",
-							"text": "A stupid question"
+							"text": "BSQ"
 						},
 						{
 							"id": "2",
-							"text": "An even stupider question"
+							"text": "Minishell 1"
+						},
+						{
+							"id": "3",
+							"text": "MinilibC"
+						},
+						{
+							"id": "4",
+							"text": "Something else"
 						}
 					],
 					"correct_answer": "1"
+				},
+				{
+					"id": 2,
+					"title": "What is the difficulty of the project ?",
+					"answers": [
+						{
+							"id": "1",
+							"text": "Pretty easy"
+						},
+						{
+							"id": "2",
+							"text": "Abysmal"
+						},
+						{
+							"id": "3",
+							"text": "Decent"
+						},
+						{
+							"id": "4",
+							"text": "Very hard"
+						}
+					],
+					"correct_answer": "3"
 				}
 			]
 		},
@@ -39,6 +71,7 @@
 			"subject_url": "/pool/day03.md",
 			"questions": [
 				{
+					"id": 1,
 					"title": "What is this project",
 					"answers": [
 						{

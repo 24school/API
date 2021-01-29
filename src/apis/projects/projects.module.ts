@@ -6,7 +6,7 @@ import { ProjectService } from './projects.service';
 
 @Module({
 	imports: [
-		UserModule
+		//UserModule
 	],
 	controllers: [ProjectController],
 	providers: [ProjectService],

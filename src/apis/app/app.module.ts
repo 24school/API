@@ -12,7 +12,7 @@ const SYNCHRONIZE: boolean = true;
 const DROP_SCHEMA: boolean = true;
 
 @Module({
-	imports: [TypeOrmModule.forRoot({
+	imports: [/* TypeOrmModule.forRoot({
 		type: 'postgres',
 		host: 'localhost',
 		port: 35432,
@@ -22,11 +22,11 @@ const DROP_SCHEMA: boolean = true;
 		entities: [join(__dirname, '../../config/database/entities/*.entity.{ts,js}')],
 		synchronize: SYNCHRONIZE,
 		dropSchema: DROP_SCHEMA
-	}),
+	}), */
 		ServeStaticModule.forRoot({
 			rootPath: join(__dirname, '../../../', 'static')
 		}),
-		UserModule,
+		//UserModule,
 		ProjectModule
 	],
 	controllers: [AppController],
