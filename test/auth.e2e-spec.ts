@@ -45,6 +45,7 @@ describe('Auth end to end', () => {
 		expect(res.body.success).toEqual(true);
 		expect(res.body).toHaveProperty('data.id');
 		expect(res.body).toHaveProperty('data.access_token');
+		access_token = res.body.data.access_token;
 	});
 
 	it('/users/login (POST) Fails with wrong password', async () => {
@@ -61,7 +62,10 @@ describe('Auth end to end', () => {
 
 	it('/users/ (GET)', async () => {
 		const res = await request(app.getHttpServer())
-			.get('/api/users/');
+			.get('/api/users/')
+			.set({
+				"Authorization": access_token
+			});
 		expect(res.status).toEqual(200);
 		expect(res.body.success).toEqual(true);
 	});

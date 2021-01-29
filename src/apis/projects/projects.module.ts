@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 
-import { UserModule } from '../users';
+import { AuthModule } from '../auth';
 import { ProjectController } from './projects.controller';
 import { ProjectService } from './projects.service';
 

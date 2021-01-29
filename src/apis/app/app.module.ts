@@ -3,6 +3,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 
+import { AuthModule } from '../auth';
 import { UserModule } from '../users';
 import { ProjectModule } from '../projects';
 import { AppController } from './app.controller';
@@ -12,7 +13,7 @@ const SYNCHRONIZE: boolean = true;
 const DROP_SCHEMA: boolean = true;
 
 @Module({
-	imports: [/* TypeOrmModule.forRoot({
+	imports: [TypeOrmModule.forRoot({
 		type: 'postgres',
 		host: 'localhost',
 		port: 35432,
@@ -22,11 +23,12 @@ const DROP_SCHEMA: boolean = true;
 		entities: [join(__dirname, '../../config/database/entities/*.entity.{ts,js}')],
 		synchronize: SYNCHRONIZE,
 		dropSchema: DROP_SCHEMA
-	}), */
+	}),
 		ServeStaticModule.forRoot({
 			rootPath: join(__dirname, '../../../', 'static')
 		}),
-		//UserModule,
+		AuthModule,
+		UserModule,
 		ProjectModule
 	],
 	controllers: [AppController],
